@@ -342,7 +342,7 @@ function Home() {
             <div className="text-center lg:text-left">
               {/* Main Title with Character Animation */}
               <div ref={titleRef} className="mt-8 sm:mt-12 md:mt-16 mb-2 sm:mb-3">
-                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tight" style={{ color: '#0F172A', marginBottom: '-0.1em' }}>
+                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tight bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent" style={{ marginBottom: '-0.1em' }}>
                   <span className="char inline-block">D</span>
                   <span className="char inline-block">e</span>
                   <span className="char inline-block">e</span>
@@ -355,7 +355,7 @@ function Home() {
               {/* Subtitle */}
               <div ref={subtitleRef} className="mb-8 sm:mb-10 lg:mb-12">
                 <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-black leading-none">
-                  <span className="inline-block" style={{ color: '#0F172A' }}>Graphics</span>
+                  <span className="inline-block bg-gradient-to-r from-slate-700 via-slate-600 to-slate-700 bg-clip-text text-transparent">Graphics</span>
                 </h2>
               </div>
 
@@ -673,9 +673,9 @@ function Home() {
               <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
               <span className="font-bold text-sm sm:text-base">info@deegeegraphics.com</span>
             </a>
-            <a href="tel:+1234567890" className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors">
+            <a href="tel:+16475497017" className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors">
               <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="font-bold text-sm sm:text-base">+1 (234) 567-890</span>
+              <span className="font-bold text-sm sm:text-base">(647) 549-7017</span>
             </a>
           </div>
         </div>
