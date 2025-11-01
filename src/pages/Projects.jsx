@@ -301,8 +301,8 @@ function Projects() {
           <div className="text-center max-w-5xl mx-auto">
             {/* Main Title */}
             <div ref={titleRef} className="mb-8">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight text-white">
-                <div className="mb-4">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight">
+                <div className="mb-4 text-white">
                   <span className="char inline-block">O</span>
                   <span className="char inline-block">u</span>
                   <span className="char inline-block">r</span>
@@ -316,7 +316,7 @@ function Projects() {
                   <span className="char inline-block">v</span>
                   <span className="char inline-block">e</span>
                 </div>
-                <div className="bg-gradient-to-r from-gray-300 to-white bg-clip-text text-transparent">
+                <div className="text-white md:bg-gradient-to-r md:from-gray-300 md:to-white md:bg-clip-text md:text-transparent">
                   <span className="char inline-block">P</span>
                   <span className="char inline-block">o</span>
                   <span className="char inline-block">r</span>
