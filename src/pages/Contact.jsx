@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Mail, Phone, MapPin, Send, Clock } from 'lucide-react'
+import emailjs from '@emailjs/browser'
+import { emailjsConfig } from '../config/emailjs.config'
 import Squares from '../components/Squares'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -135,19 +137,42 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
+    
+    // Template parameters
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone || 'Not provided',
+      subject: formData.subject,
+      message: formData.message,
+      to_email: 'jashanvirdi12@gmail.com'
+    }
+    
+    // Send email using EmailJS
+    emailjs.send(
+      emailjsConfig.serviceID, 
+      emailjsConfig.templateID, 
+      templateParams, 
+      emailjsConfig.publicKey
+    )
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text)
+        setSubmitted(true)
+        setTimeout(() => {
+          setSubmitted(false)
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            subject: '',
+            message: '',
+          })
+        }, 3000)
       })
-    }, 3000)
+      .catch((error) => {
+        console.error('FAILED...', error)
+        alert('Failed to send message. Please try again or contact us directly at jashanvirdi12@gmail.com')
+      })
   }
 
   const contactInfo = [

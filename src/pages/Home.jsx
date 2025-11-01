@@ -508,30 +508,6 @@ function Home() {
                 </h2>
               </div>
 
-              {/* Info Card - Mobile Only */}
-              <div ref={lottieRef} className="lg:hidden relative mb-8 sm:mb-10">
-                <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-6 sm:p-8 shadow-2xl" style={{ border: '2px solid rgba(226, 232, 240, 0.8)' }}>
-                  <div className="grid grid-cols-2 gap-4 sm:gap-6">
-                    <div className="info-stat text-center p-4 rounded-2xl transition-all duration-300 hover:shadow-lg" style={{ backgroundColor: 'rgba(15, 23, 42, 0.03)' }}>
-                      <div className="text-4xl sm:text-5xl font-black mb-2 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>100+</div>
-                      <div className="text-xs sm:text-sm font-bold" style={{ color: '#64748B' }}>Projects Done</div>
-                    </div>
-                    <div className="info-stat text-center p-4 rounded-2xl transition-all duration-300 hover:shadow-lg" style={{ backgroundColor: 'rgba(15, 23, 42, 0.03)' }}>
-                      <div className="text-4xl sm:text-5xl font-black mb-2 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>100%</div>
-                      <div className="text-xs sm:text-sm font-bold" style={{ color: '#64748B' }}>Satisfaction</div>
-                    </div>
-                    <div className="info-stat text-center p-4 rounded-2xl transition-all duration-300 hover:shadow-lg" style={{ backgroundColor: 'rgba(15, 23, 42, 0.03)' }}>
-                      <div className="text-4xl sm:text-5xl font-black mb-2 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>Fast</div>
-                      <div className="text-xs sm:text-sm font-bold" style={{ color: '#64748B' }}>Delivery</div>
-                    </div>
-                    <div className="info-stat text-center p-4 rounded-2xl transition-all duration-300 hover:shadow-lg" style={{ backgroundColor: 'rgba(15, 23, 42, 0.03)' }}>
-                      <div className="text-4xl sm:text-5xl font-black mb-2 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>7 Days</div>
-                      <div className="text-xs sm:text-sm font-bold" style={{ color: '#64748B' }}>Support</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               {/* Main Title with Character Animation - Mobile Only (Below SVG) */}
               <div ref={titleMobileRef} className="lg:hidden mb-2 sm:mb-3">
                 <h1 className="text-6xl sm:text-7xl md:text-8xl font-black leading-none tracking-tight" style={{ marginBottom: '-0.1em', color: '#0F172A' }}>
@@ -545,10 +521,34 @@ function Home() {
               </div>
               
               {/* Subtitle - Mobile Only (Below SVG) */}
-              <div ref={subtitleMobileRef} className="lg:hidden mb-8 sm:mb-10">
+              <div ref={subtitleMobileRef} className="lg:hidden mb-6 sm:mb-8">
                 <h2 className="text-4xl sm:text-5xl md:text-6xl font-black leading-none">
                   <span className="inline-block bg-gradient-to-r from-slate-700 via-slate-600 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text', color: '#0F172A' }}>Graphics</span>
                 </h2>
+              </div>
+
+              {/* Info Card - Mobile Only (Below Graphics) */}
+              <div ref={lottieRef} className="lg:hidden relative mb-8 sm:mb-10 px-2">
+                <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xl" style={{ border: '2px solid rgba(226, 232, 240, 0.8)' }}>
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                    <div className="info-stat text-center p-3 sm:p-4 rounded-xl sm:rounded-2xl transition-all duration-300" style={{ backgroundColor: 'rgba(15, 23, 42, 0.03)' }}>
+                      <div className="text-3xl sm:text-4xl md:text-5xl font-black mb-1 sm:mb-2 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>100+</div>
+                      <div className="text-xs sm:text-sm font-bold leading-tight" style={{ color: '#64748B' }}>Projects Done</div>
+                    </div>
+                    <div className="info-stat text-center p-3 sm:p-4 rounded-xl sm:rounded-2xl transition-all duration-300" style={{ backgroundColor: 'rgba(15, 23, 42, 0.03)' }}>
+                      <div className="text-3xl sm:text-4xl md:text-5xl font-black mb-1 sm:mb-2 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>100%</div>
+                      <div className="text-xs sm:text-sm font-bold leading-tight" style={{ color: '#64748B' }}>Satisfaction</div>
+                    </div>
+                    <div className="info-stat text-center p-3 sm:p-4 rounded-xl sm:rounded-2xl transition-all duration-300" style={{ backgroundColor: 'rgba(15, 23, 42, 0.03)' }}>
+                      <div className="text-3xl sm:text-4xl md:text-5xl font-black mb-1 sm:mb-2 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>Fast</div>
+                      <div className="text-xs sm:text-sm font-bold leading-tight" style={{ color: '#64748B' }}>Delivery</div>
+                    </div>
+                    <div className="info-stat text-center p-3 sm:p-4 rounded-xl sm:rounded-2xl transition-all duration-300" style={{ backgroundColor: 'rgba(15, 23, 42, 0.03)' }}>
+                      <div className="text-3xl sm:text-4xl md:text-5xl font-black mb-1 sm:mb-2 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>7 Days</div>
+                      <div className="text-xs sm:text-sm font-bold leading-tight" style={{ color: '#64748B' }}>Support</div>
+                    </div>
+                  </div>
+                </div>
               </div>
               
               {/* Description - Desktop Only */}
