@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight, ChevronDown } from 'lucide-react'
+import Squares from '../components/Squares'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -285,12 +286,15 @@ function Projects() {
     <div className="min-h-screen" style={{ backgroundColor: '#F9FAFB' }}>
       {/* Hero Section */}
       <section ref={heroRef} className="relative flex items-center justify-center overflow-hidden pt-32 pb-20" style={{ perspective: '1500px', backgroundColor: '#0F172A' }}>
-        {/* Animated Grid Pattern */}
-        <div className="absolute inset-0 z-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(#F9FAFB 1px, transparent 1px), linear-gradient(90deg, #F9FAFB 1px, transparent 1px)`,
-            backgroundSize: '50px 50px'
-          }}></div>
+        {/* Animated Squares Background */}
+        <div className="absolute inset-0 z-0 opacity-[0.08]">
+          <Squares 
+            speed={0.3}
+            squareSize={50}
+            direction='diagonal'
+            borderColor='#F9FAFB'
+            hoverFillColor='#64748B'
+          />
         </div>
         
         <div className="relative z-10 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto w-full py-20">
@@ -382,13 +386,17 @@ function Projects() {
 
       {/* CTA Section */}
       <section className="py-32 relative overflow-hidden" style={{ backgroundColor: '#0F172A' }}>
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(#F9FAFB 1px, transparent 1px), linear-gradient(90deg, #F9FAFB 1px, transparent 1px)`,
-            backgroundSize: '40px 40px'
-          }}></div>
+        {/* Animated Squares Background */}
+        <div className="absolute inset-0 opacity-[0.08]">
+          <Squares 
+            speed={0.2}
+            squareSize={50}
+            direction='left'
+            borderColor='#F9FAFB'
+            hoverFillColor='#64748B'
+          />
         </div>
-        
+
         <div className="max-w-5xl mx-auto text-center px-6 sm:px-8 lg:px-12 relative z-10">
           <div className="mb-12">
             <h2 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">

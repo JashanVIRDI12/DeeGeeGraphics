@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lottie from 'lottie-react'
 import dataAnalysisAnimation from '/Isometric data analysis.json'
+import Squares from '../components/Squares'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -433,12 +434,15 @@ function Home() {
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ perspective: '1500px', backgroundColor: '#F9FAFB' }}>
-        {/* Animated Grid Pattern */}
-        <div className="absolute inset-0 z-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(#1E293B 1px, transparent 1px), linear-gradient(90deg, #1E293B 1px, transparent 1px)`,
-            backgroundSize: '50px 50px'
-          }}></div>
+        {/* Animated Squares Background */}
+        <div className="absolute inset-0 z-0 opacity-[0.15]">
+          <Squares 
+            speed={0.3}
+            squareSize={50}
+            direction='diagonal'
+            borderColor='#1E293B'
+            hoverFillColor='#0F172A'
+          />
         </div>
         
         <div className="relative z-10 px-6 sm:px-8 md:px-10 lg:px-12 max-w-7xl mx-auto w-full pt-24 sm:pt-28 md:pt-32 pb-20 sm:pb-24 md:pb-28">
