@@ -195,8 +195,8 @@ function Contact() {
     {
       icon: MapPin,
       title: 'Visit Us',
-      content: '98 Healy Rd, Bolton, ON',
-      link: 'https://maps.google.com/?q=98+Healy+Rd,+Bolton,+ON',
+      content: '12545 Coleraine Drive, Unit 9, Caledon ON L7E 3B5',
+      link: 'https://maps.google.com/?q=12545+Coleraine+Drive,+Unit+9,+Caledon+ON+L7E+3B5',
     },
   ]
 
@@ -470,6 +470,43 @@ function Contact() {
                   </div>
                 </a>
               ))}
+            </div>
+          </div>
+
+          {/* Google Maps Section */}
+          <div className="mt-16 bg-white rounded-3xl shadow-2xl overflow-hidden" style={{ border: '2px solid rgba(226, 232, 240, 0.8)' }}>
+            <div className="p-6 md:p-8 border-b-2" style={{ borderColor: '#E2E8F0' }}>
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-black mb-2" style={{ color: '#0F172A' }}>Find Us on the Map</h3>
+                  <p className="text-base font-medium" style={{ color: '#64748B' }}>12545 Coleraine Drive, Unit 9, Caledon ON L7E 3B5</p>
+                </div>
+                <a
+                  href="https://maps.google.com/?q=12545+Coleraine+Drive,+Unit+9,+Caledon+ON+L7E+3B5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center space-x-2 px-6 py-3 rounded-full font-black text-white transition-all duration-300 hover:shadow-xl transform hover:scale-105"
+                  style={{ backgroundColor: '#0F172A' }}
+                >
+                  <MapPin className="w-5 h-5" />
+                  <span>Open in Maps</span>
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div className="relative w-full h-96 md:h-[500px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2873.8!2d-79.8638!3d43.8847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2f5e5e5e5e5e%3A0x5e5e5e5e5e5e5e5e!2s12545%20Coleraine%20Dr%20%239%2C%20Caledon%2C%20ON%20L7E%203B5!5e0!3m2!1sen!2sca!4v1730472067000!5m2!1sen!2sca"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="DeeGee Graphics Location - 12545 Coleraine Dr #9, Caledon"
+              ></iframe>
             </div>
           </div>
         </div>

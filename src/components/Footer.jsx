@@ -94,13 +94,13 @@ function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://maps.google.com/?q=98+Healy+Rd,+Bolton,+ON" target="_blank" rel="noopener noreferrer" className="flex items-start space-x-3 group">
+                  <a href="https://maps.google.com/?q=12545+Coleraine+Drive,+Unit+9,+Caledon+ON+L7E+3B5" target="_blank" rel="noopener noreferrer" className="flex items-start space-x-3 group">
                     <div className="p-2 rounded-lg transition-all duration-300 group-hover:scale-110" style={{ backgroundColor: '#E2E8F0' }}>
                       <MapPin className="w-4 h-4" style={{ color: '#0F172A' }} />
                     </div>
                     <div>
                       <p className="text-xs font-semibold" style={{ color: '#64748B' }}>Location</p>
-                      <p className="font-bold text-sm" style={{ color: '#0F172A' }}>98 Healy Rd<br />Bolton, ON</p>
+                      <p className="font-bold text-sm" style={{ color: '#0F172A' }}>12545 Coleraine Drive, Unit 9<br />Caledon ON L7E 3B5</p>
                     </div>
                   </a>
                 </li>
