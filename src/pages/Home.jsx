@@ -3,7 +3,7 @@ import { ArrowRight, Sparkles, Globe, Sticker, ShieldCheck, Shirt, Printer, Stor
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lottie from 'lottie-react'
-import dataAnalysisAnimation from '/Isometric data analysis.json'
+import pencilDrawingAnimation from '/Pencil Drawing.json'
 import Squares from '../components/Squares'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -431,7 +431,7 @@ function Home() {
   ]
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen" style={{ backgroundColor: '#F9FAFB' }}>
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ perspective: '1500px', backgroundColor: '#F9FAFB' }}>
         {/* Animated Squares Background */}
@@ -477,7 +477,7 @@ function Home() {
                 
                 <div className="relative w-full max-w-xs sm:max-w-sm mx-auto rounded-3xl overflow-hidden">
                   <Lottie 
-                    animationData={dataAnalysisAnimation} 
+                    animationData={pencilDrawingAnimation} 
                     loop={true}
                     autoplay={true}
                     className="w-full h-auto"
@@ -532,7 +532,7 @@ function Home() {
               
               <div className="relative w-full max-w-lg ml-auto rounded-3xl overflow-hidden">
                 <Lottie 
-                  animationData={dataAnalysisAnimation} 
+                  animationData={pencilDrawingAnimation} 
                   loop={true}
                   autoplay={true}
                   className="w-full h-auto"

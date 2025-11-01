@@ -222,7 +222,7 @@ function Contact() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           {/* Contact Form */}
           <div ref={formRef} className="mb-16">
-            <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12" style={{ border: '2px solid rgba(226, 232, 240, 0.8)' }}>
+              <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12" style={{ border: '2px solid rgba(226, 232, 240, 0.8)' }}>
               <h2 className="text-3xl md:text-4xl font-black mb-6" style={{ color: '#0F172A' }}>Send us a Message</h2>
               
               {submitted && (
@@ -327,8 +327,8 @@ function Contact() {
                   <Send className="ml-2 w-6 h-6" />
                 </button>
               </form>
+              </div>
             </div>
-          </div>
 
           {/* Contact Info - Simple Bubble */}
           <div className="contact-bubble mt-16 bg-white rounded-3xl md:rounded-full shadow-2xl py-6 px-6 md:py-8 md:px-12" style={{ border: '2px solid rgba(226, 232, 240, 0.8)' }}>
