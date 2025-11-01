@@ -16,6 +16,8 @@ function Home() {
   const servicesRef = useRef(null)
   const whyUsRef = useRef(null)
   const featuredRef = useRef(null)
+  const lottieRef = useRef(null)
+  const lottieDesktopRef = useRef(null)
 
   useEffect(() => {
     // Set GSAP defaults for smoother animations
@@ -115,6 +117,54 @@ function Home() {
       },
       '-=0.2'
     )
+
+    // Lottie Animation - Mobile
+    if (lottieRef.current) {
+      tl.fromTo(lottieRef.current,
+        {
+          opacity: 0,
+          scale: 0.8,
+          rotationY: -45,
+          z: -100,
+          transformOrigin: '50% 50%',
+          transformPerspective: 1000
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          rotationY: 0,
+          z: 0,
+          duration: 0.8,
+          ease: 'back.out(1.3)',
+          force3D: true
+        },
+        '-=0.4'
+      )
+    }
+
+    // Lottie Animation - Desktop
+    if (lottieDesktopRef.current) {
+      tl.fromTo(lottieDesktopRef.current,
+        {
+          opacity: 0,
+          scale: 0.8,
+          rotationY: 45,
+          z: -100,
+          transformOrigin: '50% 50%',
+          transformPerspective: 1000
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          rotationY: 0,
+          z: 0,
+          duration: 0.8,
+          ease: 'back.out(1.3)',
+          force3D: true
+        },
+        '-=0.8'
+      )
+    }
 
     // Floating elements - no animation
 
@@ -342,25 +392,25 @@ function Home() {
             <div className="text-center lg:text-left">
               {/* Main Title with Character Animation */}
               <div ref={titleRef} className="mt-8 sm:mt-12 md:mt-16 mb-2 sm:mb-3">
-                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tight bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent" style={{ marginBottom: '-0.1em' }}>
-                  <span className="char inline-block">D</span>
-                  <span className="char inline-block">e</span>
-                  <span className="char inline-block">e</span>
-                  <span className="char inline-block">G</span>
-                  <span className="char inline-block">e</span>
-                  <span className="char inline-block">e</span>
+                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tight" style={{ marginBottom: '-0.1em', color: '#0F172A' }}>
+                  <span className="char inline-block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>D</span>
+                  <span className="char inline-block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>e</span>
+                  <span className="char inline-block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>e</span>
+                  <span className="char inline-block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>G</span>
+                  <span className="char inline-block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>e</span>
+                  <span className="char inline-block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>e</span>
                 </h1>
               </div>
               
               {/* Subtitle */}
               <div ref={subtitleRef} className="mb-8 sm:mb-10 lg:mb-12">
                 <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-black leading-none">
-                  <span className="inline-block bg-gradient-to-r from-slate-700 via-slate-600 to-slate-700 bg-clip-text text-transparent">Graphics</span>
+                  <span className="inline-block bg-gradient-to-r from-slate-700 via-slate-600 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text', color: '#0F172A' }}>Graphics</span>
                 </h2>
               </div>
 
               {/* Lottie Animation - Mobile Only */}
-              <div className="lg:hidden relative flex items-center justify-center mb-8 sm:mb-10">
+              <div ref={lottieRef} className="lg:hidden relative flex items-center justify-center mb-8 sm:mb-10">
                 {/* Blurry background effect */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full blur-3xl opacity-30" style={{ background: 'radial-gradient(circle, rgba(100, 116, 139, 0.4), rgba(15, 23, 42, 0.2))' }}></div>
@@ -396,7 +446,7 @@ function Home() {
             </div>
 
             {/* Right Column - Lottie Animation - Desktop Only */}
-            <div className="hidden lg:flex relative items-center justify-end">
+            <div ref={lottieDesktopRef} className="hidden lg:flex relative items-center justify-end">
               {/* Blurry background effect */}
               <div className="absolute inset-0 flex items-center justify-end">
                 <div className="w-96 h-96 rounded-full blur-3xl opacity-30" style={{ background: 'radial-gradient(circle, rgba(100, 116, 139, 0.4), rgba(15, 23, 42, 0.2))' }}></div>
