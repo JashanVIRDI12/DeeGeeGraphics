@@ -126,10 +126,10 @@ function Services() {
 
   const services = [
     {
-      icon: <Globe className="w-10 h-10" />,
-      title: "Website Design",
-      description: "Build a stunning, responsive, and user-friendly website tailored to your brand's needs.",
-      image: "/webdesign.jpg"
+      icon: <Printer className="w-10 h-10" />,
+      title: "Printing Services",
+      description: "Premium printing solutions for business cards, brochures, banners, and more.",
+      image: "/printingservices.jpg"
     },
     {
       icon: <Sticker className="w-10 h-10" />,
@@ -150,16 +150,16 @@ function Services() {
       image: "/garmentprinting.jpg"
     },
     {
-      icon: <Printer className="w-10 h-10" />,
-      title: "Printing Services",
-      description: "Premium printing solutions for business cards, brochures, banners, and more.",
-      image: "/printingservices.jpg"
-    },
-    {
       icon: <Store className="w-10 h-10" />,
       title: "Store Front Signs",
       description: "Eye-catching storefront signs that enhance your brand's presence and attract customers.",
       image: "/storefront.jpg"
+    },
+    {
+      icon: <Globe className="w-10 h-10" />,
+      title: "Website Design",
+      description: "Build a stunning, responsive, and user-friendly website tailored to your brand's needs.",
+      image: "/webdesign.jpg"
     }
   ]
 
@@ -385,10 +385,10 @@ function Services() {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-            <button className="group px-12 py-6 rounded-full font-black text-xl transition-all duration-300 flex items-center space-x-3 shadow-2xl hover:shadow-[0_20px_60px_rgba(249,250,251,0.3)] transform hover:scale-105" style={{ backgroundColor: '#F9FAFB', color: '#0F172A' }}>
+            <Link to="/contact" className="group px-12 py-6 rounded-full font-black text-xl transition-all duration-300 flex items-center space-x-3 shadow-2xl hover:shadow-[0_20px_60px_rgba(249,250,251,0.3)] transform hover:scale-105" style={{ backgroundColor: '#F9FAFB', color: '#0F172A' }}>
               <span>Contact Us Now</span>
               <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
-            </button>
+            </Link>
             
             <Link to="/projects" className="group border-2 px-12 py-6 rounded-full font-black text-xl text-white transition-all duration-300 flex items-center space-x-3 hover:bg-white hover:text-black" style={{ borderColor: '#F9FAFB' }}>
               <span>View Our Work</span>

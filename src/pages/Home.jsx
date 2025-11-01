@@ -20,7 +20,6 @@ function Home() {
   const featuredRef = useRef(null)
   const lottieRef = useRef(null)
   const lottieDesktopRef = useRef(null)
-  const infoCardsRef = useRef(null)
 
   useEffect(() => {
     // Set GSAP defaults for smoother animations
@@ -860,10 +859,10 @@ function Home() {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16">
-            <button className="group px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 rounded-full font-black text-base sm:text-lg md:text-xl transition-all duration-300 flex items-center space-x-3 shadow-2xl hover:shadow-[0_20px_60px_rgba(249,250,251,0.3)] transform hover:scale-105 w-full sm:w-auto" style={{ backgroundColor: '#F9FAFB', color: '#0F172A' }}>
+            <Link to="/contact" className="group px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 rounded-full font-black text-base sm:text-lg md:text-xl transition-all duration-300 flex items-center space-x-3 shadow-2xl hover:shadow-[0_20px_60px_rgba(249,250,251,0.3)] transform hover:scale-105 w-full sm:w-auto" style={{ backgroundColor: '#F9FAFB', color: '#0F172A' }}>
               <span>Start Your Project</span>
               <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
-            </button>
+            </Link>
             
             <Link to="/projects" className="group border-2 px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 rounded-full font-black text-base sm:text-lg md:text-xl text-white transition-all duration-300 flex items-center space-x-3 hover:bg-white hover:text-black w-full sm:w-auto" style={{ borderColor: '#F9FAFB' }}>
               <span>View Our Work</span>
