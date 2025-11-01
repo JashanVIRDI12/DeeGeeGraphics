@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { ArrowRight, Sparkles, Globe, Sticker, ShieldCheck, Shirt, Printer, Store, Award, Target, Heart, Zap, Mail, Phone, ChevronDown } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -21,6 +22,7 @@ function Home() {
   const featuredRef = useRef(null)
   const lottieRef = useRef(null)
   const lottieDesktopRef = useRef(null)
+  const svgButtonRef = useRef(null)
 
   useEffect(() => {
     // Set GSAP defaults for smoother animations
@@ -155,24 +157,41 @@ function Home() {
       )
     }
 
-    // CTA buttons with smooth bounce
+    // CTA buttons - Simple smooth fade-in
     tl.fromTo(ctaRef.current.children,
       { 
-        y: 20, 
-        opacity: 0,
-        scale: 0.8
+        y: 30, 
+        opacity: 0
       },
       { 
         y: 0, 
         opacity: 1,
-        scale: 1,
         duration: 0.5,
-        stagger: 0.08,
-        ease: 'back.out(1.5)',
-        force3D: true
+        stagger: 0.1,
+        ease: 'power2.out'
       },
-      '-=0.2'
+      '-=0.3'
     )
+
+    // SVG Button Animation Setup
+    if (svgButtonRef.current) {
+      const svgTl = gsap.timeline({ paused: true })
+      const rect = svgButtonRef.current.children[0]
+      const text = svgButtonRef.current.querySelector('text')
+      const polyline = svgButtonRef.current.querySelector('polyline')
+      const line = svgButtonRef.current.querySelector('line')
+      
+      svgTl.to(rect, { attr: { width: 220 }, duration: 0.4, ease: 'power4.inOut' })
+      svgTl.to(text, { fill: '#fff', duration: 0.4, ease: 'none' }, 0)
+      svgTl.to([polyline, line], { x: 14, duration: 0.4, ease: 'power4.inOut' }, 0)
+      svgTl.to(line, { attr: { x2: 3 }, duration: 0.4, ease: 'power4.inOut' }, 0)
+      
+      svgTl.reverse()
+      
+      const svgButton = svgButtonRef.current.parentElement
+      svgButton.addEventListener('mouseenter', () => svgTl.play())
+      svgButton.addEventListener('mouseleave', () => svgTl.reverse())
+    }
 
     // Lottie Animation - Mobile
     if (lottieRef.current) {
@@ -228,13 +247,15 @@ function Home() {
     const serviceCards = gsap.utils.toArray('.service-card')
     
     if (serviceCards.length > 0) {
+      // Set initial state immediately to prevent flash
+      gsap.set(serviceCards, {
+        opacity: 0,
+        y: 100,
+        scale: 0.9
+      })
+      
       serviceCards.forEach((card, index) => {
-        gsap.fromTo(card,
-          {
-            opacity: 0,
-            y: 100,
-            scale: 0.9
-          },
+        gsap.to(card,
           {
             opacity: 1,
             y: 0,
@@ -243,7 +264,8 @@ function Home() {
             ease: 'power3.out',
             scrollTrigger: {
               trigger: card,
-              start: 'top 85%',
+              start: 'top 90%',
+              end: 'top 20%',
               toggleActions: 'play none none none'
             },
             delay: index * 0.1
@@ -369,10 +391,10 @@ function Home() {
 
   const services = [
     {
-      icon: <Globe className="w-10 h-10" />,
-      title: "Website Design",
-      description: "Modern, responsive websites that captivate your audience and drive results.",
-      image: "/webdesign.jpg"
+      icon: <Printer className="w-10 h-10" />,
+      title: "Printing Services",
+      description: "Comprehensive printing solutions from business cards to large format.",
+      image: "/printingservices.jpg"
     },
     {
       icon: <Sticker className="w-10 h-10" />,
@@ -393,16 +415,16 @@ function Home() {
       image: "/garmentprinting.jpg"
     },
     {
-      icon: <Printer className="w-10 h-10" />,
-      title: "Printing Services",
-      description: "Comprehensive printing solutions from business cards to large format.",
-      image: "/printingservices.jpg"
-    },
-    {
       icon: <Store className="w-10 h-10" />,
       title: "Store Front Signs",
       description: "Eye-catching storefront signage that attracts customers and builds brand presence.",
       image: "/storefront.jpg"
+    },
+    {
+      icon: <Globe className="w-10 h-10" />,
+      title: "Website Design",
+      description: "Modern, responsive websites that captivate your audience and drive results.",
+      image: "/webdesign.jpg"
     }
   ]
 
@@ -516,10 +538,15 @@ function Home() {
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
                 </button>
                 
-                <button className="group border-3 px-6 sm:px-8 md:px-10 py-4 sm:py-5 rounded-full font-black text-base sm:text-lg transition-all duration-300 flex items-center space-x-2 justify-center" style={{ borderColor: '#0F172A', color: '#0F172A', backgroundColor: 'transparent' }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#0F172A'; e.currentTarget.style.color = '#FFFFFF'; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#0F172A'; }}>
-                  <span>View Our Work</span>
-                  <Zap className="w-6 h-6 group-hover:rotate-12 transition-transform" />
-                </button>
+                <Link to="/projects" className="svg-button-wrapper cursor-pointer" style={{ background: 'none', border: 'none', padding: 0, outline: 'none', display: 'inline-block' }}>
+                  <svg ref={svgButtonRef} xmlns="http://www.w3.org/2000/svg" width="220" height="60" viewBox="0 0 220 60" className="w-full max-w-[220px] h-auto" style={{ display: 'block' }}>
+                    <rect x="0" y="0" width="60" height="60" rx="30" ry="30" fill="#0F172A" />
+                    <rect x="1" y="1" width="218" height="58" rx="29" ry="29" fill="none" stroke="#0F172A" strokeWidth="2" vectorEffect="non-scaling-stroke"/> 
+                    <text transform="translate(130 38)" textAnchor="middle" fontSize="20" fontWeight="900" fill="#0F172A" style={{ pointerEvents: 'none' }}>VIEW WORK</text>
+                    <line x1="38" y1="30" x2="38" y2="30" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                    <polyline points="27 20 38 30 27 40" fill="none" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"></polyline>
+                  </svg>
+                </Link>
               </div>
             </div>
 
@@ -580,7 +607,8 @@ function Home() {
                 className="service-card mb-6 sm:mb-8 lg:sticky"
                 style={{ 
                   top: `${80 + index * 40}px`,
-                  zIndex: services.length - index
+                  zIndex: services.length - index,
+                  opacity: 0
                 }}
               >
                 <div className="relative overflow-hidden rounded-3xl shadow-2xl transition-all duration-500 hover:scale-[1.02] cursor-pointer group" style={{ 
@@ -789,10 +817,10 @@ function Home() {
               <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
             </button>
             
-            <button className="group border-2 px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 rounded-full font-black text-base sm:text-lg md:text-xl text-white transition-all duration-300 flex items-center space-x-3 hover:bg-white hover:text-black w-full sm:w-auto" style={{ borderColor: '#F9FAFB' }}>
+            <Link to="/projects" className="group border-2 px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 rounded-full font-black text-base sm:text-lg md:text-xl text-white transition-all duration-300 flex items-center space-x-3 hover:bg-white hover:text-black w-full sm:w-auto" style={{ borderColor: '#F9FAFB' }}>
               <span>View Our Work</span>
               <ArrowRight className="w-7 h-7 group-hover:translate-x-2 transition-transform" />
-            </button>
+            </Link>
           </div>
 
           {/* Contact Info */}
