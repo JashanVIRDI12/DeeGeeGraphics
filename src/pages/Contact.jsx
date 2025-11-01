@@ -251,8 +251,47 @@ function Contact() {
               <h2 className="text-3xl md:text-4xl font-black mb-6" style={{ color: '#0F172A' }}>Send us a Message</h2>
               
               {submitted && (
-                <div className="mb-6 p-4 rounded-xl text-white font-semibold" style={{ backgroundColor: '#10B981' }}>
-                  Thank you! Your message has been sent successfully. We'll get back to you soon.
+                <div 
+                  className="mb-6 p-6 rounded-2xl shadow-2xl animate-slideIn relative overflow-hidden"
+                  style={{ 
+                    background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+                    animation: 'slideIn 0.5s ease-out, pulse 2s ease-in-out infinite'
+                  }}
+                >
+                  <div className="absolute top-0 left-0 w-full h-1 bg-white opacity-50"></div>
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-black text-white mb-1">Message Sent Successfully! 🎉</h3>
+                      <p className="text-white text-sm font-medium opacity-90">
+                        Thank you for reaching out! We'll get back to you within 24 hours.
+                      </p>
+                    </div>
+                  </div>
+                  <style>{`
+                    @keyframes slideIn {
+                      from {
+                        transform: translateY(-20px);
+                        opacity: 0;
+                      }
+                      to {
+                        transform: translateY(0);
+                        opacity: 1;
+                      }
+                    }
+                    @keyframes pulse {
+                      0%, 100% {
+                        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+                      }
+                      50% {
+                        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+                      }
+                    }
+                  `}</style>
                 </div>
               )}
 
