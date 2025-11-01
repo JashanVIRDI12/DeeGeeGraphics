@@ -145,7 +145,7 @@ function Contact() {
       phone: formData.phone || 'Not provided',
       subject: formData.subject,
       message: formData.message,
-      to_email: 'jashanvirdi12@gmail.com'
+      to_email: 'info@deegeegraphics.com'
     }
     
     // Send email using EmailJS

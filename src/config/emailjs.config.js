@@ -2,9 +2,9 @@
 // Get your credentials from https://www.emailjs.com/
 
 export const emailjsConfig = {
-  serviceID: 'YOUR_SERVICE_ID',      // Replace with your EmailJS service ID
-  templateID: 'YOUR_TEMPLATE_ID',    // Replace with your EmailJS template ID
-  publicKey: 'YOUR_PUBLIC_KEY'       // Replace with your EmailJS public key
+  serviceID: 'service_a89bxn1',      // Replace with your EmailJS service ID
+  templateID: 'template_fa259mo',    // Replace with your EmailJS template ID
+  publicKey: 's5wMmtfCu_Ay2_t9n'       // Replace with your EmailJS public key
 }
 
 // Instructions to set up EmailJS:
