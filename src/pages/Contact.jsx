@@ -21,6 +21,7 @@ function Contact() {
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     // Set GSAP defaults
@@ -137,6 +138,7 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setLoading(true)
     
     // Template parameters
     const templateParams = {
@@ -157,6 +159,7 @@ function Contact() {
     )
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text)
+        setLoading(false)
         setSubmitted(true)
         setTimeout(() => {
           setSubmitted(false)
@@ -167,11 +170,12 @@ function Contact() {
             subject: '',
             message: '',
           })
-        }, 3000)
+        }, 5000)
       })
       .catch((error) => {
         console.error('FAILED...', error)
-        alert('Failed to send message. Please try again or contact us directly at jashanvirdi12@gmail.com')
+        setLoading(false)
+        alert('Failed to send message. Please try again or contact us directly at info@deegeegraphics.com')
       })
   }
 
@@ -250,6 +254,41 @@ function Contact() {
               <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12" style={{ border: '2px solid rgba(226, 232, 240, 0.8)' }}>
               <h2 className="text-3xl md:text-4xl font-black mb-6" style={{ color: '#0F172A' }}>Send us a Message</h2>
               
+              {loading && (
+                <div 
+                  className="mb-6 p-6 rounded-2xl shadow-xl relative overflow-hidden"
+                  style={{ 
+                    background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
+                    animation: 'slideIn 0.5s ease-out'
+                  }}
+                >
+                  <div className="flex items-center space-x-4">
+                    <div className="flex-shrink-0">
+                      <div className="loader"></div>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-black text-white mb-1">Sending your message...</h3>
+                      <p className="text-gray-300 text-sm font-medium">
+                        Please wait a moment
+                      </p>
+                    </div>
+                  </div>
+                  <style>{`
+                    .loader {
+                      width: 32px;
+                      height: 32px;
+                      border: 4px solid rgba(255, 255, 255, 0.2);
+                      border-top-color: #ffffff;
+                      border-radius: 50%;
+                      animation: spin 0.8s linear infinite;
+                    }
+                    @keyframes spin {
+                      to { transform: rotate(360deg); }
+                    }
+                  `}</style>
+                </div>
+              )}
+
               {submitted && (
                 <div 
                   className="mb-6 p-6 rounded-2xl shadow-2xl animate-slideIn relative overflow-hidden"
@@ -384,11 +423,31 @@ function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full text-white font-black py-5 px-8 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center text-lg"
+                  disabled={loading}
+                  className="w-full text-white font-black py-5 px-8 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center text-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                   style={{ backgroundColor: '#0F172A' }}
                 >
-                  Send Message
-                  <Send className="ml-2 w-6 h-6" />
+                  {loading ? (
+                    <>
+                      <div className="loader-small mr-2"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="ml-2 w-6 h-6" />
+                    </>
+                  )}
+                  <style>{`
+                    .loader-small {
+                      width: 20px;
+                      height: 20px;
+                      border: 3px solid rgba(255, 255, 255, 0.3);
+                      border-top-color: #ffffff;
+                      border-radius: 50%;
+                      animation: spin 0.6s linear infinite;
+                    }
+                  `}</style>
                 </button>
               </form>
               </div>
