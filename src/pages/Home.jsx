@@ -3,7 +3,7 @@ import { ArrowRight, Sparkles, Globe, Sticker, ShieldCheck, Shirt, Printer, Stor
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lottie from 'lottie-react'
-import businessGrowthAnimation from '/Business Growth.json'
+import dataAnalysisAnimation from '/Isometric data analysis.json'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -11,6 +11,8 @@ function Home() {
   const heroRef = useRef(null)
   const titleRef = useRef(null)
   const subtitleRef = useRef(null)
+  const titleMobileRef = useRef(null)
+  const subtitleMobileRef = useRef(null)
   const descriptionRef = useRef(null)
   const ctaRef = useRef(null)
   const servicesRef = useRef(null)
@@ -29,56 +31,108 @@ function Home() {
     // Epic Hero Animation Sequence with 3D transforms
     const tl = gsap.timeline({ delay: 0.1 })
     
-    // Animated title - 3D flip effect
-    const titleChars = titleRef.current.querySelectorAll('.char')
-    tl.fromTo(titleChars,
-      { 
-        y: 100, 
-        opacity: 0, 
-        rotationX: -90,
-        rotationY: -45,
-        z: -200,
-        transformOrigin: '50% 50%',
-        transformPerspective: 1000
-      },
-      { 
-        y: 0, 
-        opacity: 1, 
-        rotationX: 0,
-        rotationY: 0,
-        z: 0,
-        duration: 0.8,
-        stagger: 0.04,
-        ease: 'back.out(1.5)',
-        force3D: true
-      }
-    )
+    // Animated title - 3D flip effect (Desktop)
+    const titleChars = titleRef.current?.querySelectorAll('.char')
+    if (titleChars && titleChars.length > 0) {
+      tl.fromTo(titleChars,
+        { 
+          y: 100, 
+          opacity: 0, 
+          rotationX: -90,
+          rotationY: -45,
+          z: -200,
+          transformOrigin: '50% 50%',
+          transformPerspective: 1000
+        },
+        { 
+          y: 0, 
+          opacity: 1, 
+          rotationX: 0,
+          rotationY: 0,
+          z: 0,
+          duration: 0.8,
+          stagger: 0.04,
+          ease: 'back.out(1.5)',
+          force3D: true
+        }
+      )
 
-    // Subtitle with 3D wave effect
-    tl.fromTo(subtitleRef.current.children,
-      { 
-        y: 50, 
-        opacity: 0,
-        scale: 0.5,
-        rotationY: 90,
-        transformOrigin: '50% 50%',
-        transformPerspective: 800
-      },
-      { 
-        y: 0, 
-        opacity: 1,
-        scale: 1,
-        rotationY: 0,
-        duration: 0.7,
-        stagger: 0.08,
-        ease: 'back.out(1.7)',
-        force3D: true
-      },
-      '-=0.4'
-    )
+      // Subtitle with 3D wave effect (Desktop)
+      tl.fromTo(subtitleRef.current.children,
+        { 
+          y: 50, 
+          opacity: 0,
+          scale: 0.5,
+          rotationY: 90,
+          transformOrigin: '50% 50%',
+          transformPerspective: 800
+        },
+        { 
+          y: 0, 
+          opacity: 1,
+          scale: 1,
+          rotationY: 0,
+          duration: 0.7,
+          stagger: 0.08,
+          ease: 'back.out(1.7)',
+          force3D: true
+        },
+        '-=0.4'
+      )
+    }
 
-    // Description with 3D depth
-    tl.fromTo(descriptionRef.current,
+    // Animated title - Mobile (appears after Lottie)
+    const titleMobileChars = titleMobileRef.current?.querySelectorAll('.char-mobile')
+    if (titleMobileChars && titleMobileChars.length > 0) {
+      tl.fromTo(titleMobileChars,
+        { 
+          y: 100, 
+          opacity: 0, 
+          rotationX: -90,
+          z: -200,
+          transformOrigin: '50% 50%',
+          transformPerspective: 1000
+        },
+        { 
+          y: 0, 
+          opacity: 1, 
+          rotationX: 0,
+          z: 0,
+          duration: 0.8,
+          stagger: 0.04,
+          ease: 'back.out(1.5)',
+          force3D: true
+        },
+        '-=0.6'
+      )
+
+      // Subtitle - Mobile
+      tl.fromTo(subtitleMobileRef.current.children,
+        { 
+          y: 50, 
+          opacity: 0,
+          scale: 0.5,
+          rotationY: 90,
+          transformOrigin: '50% 50%',
+          transformPerspective: 800
+        },
+        { 
+          y: 0, 
+          opacity: 1,
+          scale: 1,
+          rotationY: 0,
+          duration: 0.7,
+          stagger: 0.08,
+          ease: 'back.out(1.7)',
+          force3D: true
+        },
+        '-=0.4'
+      )
+    }
+
+    // Description with 3D depth (Desktop only)
+    if (descriptionRef.current) {
+      tl.fromTo(descriptionRef.current,
       { 
         y: 40, 
         opacity: 0,
@@ -97,7 +151,8 @@ function Home() {
         force3D: true
       },
       '-=0.3'
-    )
+      )
+    }
 
     // CTA buttons with smooth bounce
     tl.fromTo(ctaRef.current.children,
@@ -386,12 +441,12 @@ function Home() {
           }}></div>
         </div>
         
-        <div className="relative z-10 px-4 sm:px-6 md:px-8 lg:px-12 max-w-7xl mx-auto w-full pt-24 sm:pt-28 md:pt-32 pb-20 sm:pb-24 md:pb-28">
+        <div className="relative z-10 px-6 sm:px-8 md:px-10 lg:px-12 max-w-7xl mx-auto w-full pt-24 sm:pt-28 md:pt-32 pb-20 sm:pb-24 md:pb-28">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left Column - Content */}
             <div className="text-center lg:text-left">
-              {/* Main Title with Character Animation */}
-              <div ref={titleRef} className="mb-2 sm:mb-3">
+              {/* Main Title with Character Animation - Desktop Only */}
+              <div ref={titleRef} className="hidden lg:block mb-2 sm:mb-3">
                 <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tight" style={{ marginBottom: '-0.1em', color: '#0F172A' }}>
                   <span className="char inline-block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>D</span>
                   <span className="char inline-block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>e</span>
@@ -402,8 +457,8 @@ function Home() {
                 </h1>
               </div>
               
-              {/* Subtitle */}
-              <div ref={subtitleRef} className="mb-8 sm:mb-10 lg:mb-12">
+              {/* Subtitle - Desktop Only */}
+              <div ref={subtitleRef} className="hidden lg:block mb-8 sm:mb-10 lg:mb-12">
                 <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-black leading-none">
                   <span className="inline-block bg-gradient-to-r from-slate-700 via-slate-600 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text', color: '#0F172A' }}>Graphics</span>
                 </h2>
@@ -416,18 +471,37 @@ function Home() {
                   <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full blur-3xl opacity-30" style={{ background: 'radial-gradient(circle, rgba(100, 116, 139, 0.4), rgba(15, 23, 42, 0.2))' }}></div>
                 </div>
                 
-                <div className="relative w-full max-w-xs sm:max-w-sm mx-auto rounded-3xl overflow-hidden border-4 border-slate-800">
+                <div className="relative w-full max-w-xs sm:max-w-sm mx-auto rounded-3xl overflow-hidden">
                   <Lottie 
-                    animationData={businessGrowthAnimation} 
+                    animationData={dataAnalysisAnimation} 
                     loop={true}
                     autoplay={true}
                     className="w-full h-auto"
                   />
                 </div>
               </div>
+
+              {/* Main Title with Character Animation - Mobile Only (Below SVG) */}
+              <div ref={titleMobileRef} className="lg:hidden mb-2 sm:mb-3">
+                <h1 className="text-6xl sm:text-7xl md:text-8xl font-black leading-none tracking-tight" style={{ marginBottom: '-0.1em', color: '#0F172A' }}>
+                  <span className="char-mobile inline-block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>D</span>
+                  <span className="char-mobile inline-block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>e</span>
+                  <span className="char-mobile inline-block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>e</span>
+                  <span className="char-mobile inline-block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>G</span>
+                  <span className="char-mobile inline-block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>e</span>
+                  <span className="char-mobile inline-block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>e</span>
+                </h1>
+              </div>
               
-              {/* Description */}
-              <p ref={descriptionRef} className="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0" style={{ color: '#64748B' }}>
+              {/* Subtitle - Mobile Only (Below SVG) */}
+              <div ref={subtitleMobileRef} className="lg:hidden mb-8 sm:mb-10">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-black leading-none">
+                  <span className="inline-block bg-gradient-to-r from-slate-700 via-slate-600 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text', color: '#0F172A' }}>Graphics</span>
+                </h2>
+              </div>
+              
+              {/* Description - Desktop Only */}
+              <p ref={descriptionRef} className="hidden lg:block text-base sm:text-lg md:text-xl mb-8 sm:mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0" style={{ color: '#64748B' }}>
                 Delivering high-quality design, printing, and branding solutions that are tailored to your unique business goals, ensuring your brand stands out with creativity, precision, and exceptional craftsmanship in every project.
               </p>
               
@@ -452,9 +526,9 @@ function Home() {
                 <div className="w-96 h-96 rounded-full blur-3xl opacity-30" style={{ background: 'radial-gradient(circle, rgba(100, 116, 139, 0.4), rgba(15, 23, 42, 0.2))' }}></div>
               </div>
               
-              <div className="relative w-full max-w-lg ml-auto rounded-3xl overflow-hidden border-4 border-slate-800">
+              <div className="relative w-full max-w-lg ml-auto rounded-3xl overflow-hidden">
                 <Lottie 
-                  animationData={businessGrowthAnimation} 
+                  animationData={dataAnalysisAnimation} 
                   loop={true}
                   autoplay={true}
                   className="w-full h-auto"
@@ -474,7 +548,7 @@ function Home() {
       </section>
 
       {/* Services Section - Stacked Cards Design */}
-      <section ref={servicesRef} className="py-16 sm:py-24 md:py-32 relative overflow-hidden" style={{ backgroundColor: '#F9FAFB' }}>
+      <section ref={servicesRef} className="py-20 sm:py-24 md:py-32 relative overflow-hidden" style={{ backgroundColor: '#F9FAFB' }}>
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -483,7 +557,7 @@ function Home() {
           }}></div>
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 md:px-10 lg:px-12 relative z-10">
           {/* Section Header */}
           <div className="text-center mb-12 sm:mb-16 md:mb-20 section-header">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 sm:mb-6" style={{ color: '#0F172A' }}>
@@ -574,7 +648,7 @@ function Home() {
       </section>
 
       {/* Why Choose Us Section - Modern Minimal Design */}
-      <section ref={whyUsRef} className="py-16 sm:py-24 md:py-32 relative overflow-hidden" style={{ backgroundColor: '#0F172A' }}>
+      <section ref={whyUsRef} className="py-20 sm:py-24 md:py-32 relative overflow-hidden" style={{ backgroundColor: '#0F172A' }}>
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -583,7 +657,7 @@ function Home() {
           }}></div>
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 md:px-10 lg:px-12">
           {/* Section Header */}
           <div className="mb-16 sm:mb-20 md:mb-24">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6">
@@ -631,7 +705,7 @@ function Home() {
       </section>
 
       {/* Featured Work Section */}
-      <section ref={featuredRef} className="py-16 sm:py-24 md:py-32 relative overflow-hidden" style={{ backgroundColor: '#F9FAFB' }}>
+      <section ref={featuredRef} className="py-20 sm:py-24 md:py-32 relative overflow-hidden" style={{ backgroundColor: '#F9FAFB' }}>
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -640,7 +714,7 @@ function Home() {
           }}></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-10 lg:px-12 relative z-10">
           {/* Section Header */}
           <div className="text-center mb-12 sm:mb-16 md:mb-20 section-header">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 sm:mb-6" style={{ color: '#0F172A' }}>
@@ -681,7 +755,7 @@ function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-24 md:py-32 relative overflow-hidden" style={{ backgroundColor: '#0F172A' }}>
+      <section className="py-20 sm:py-24 md:py-32 relative overflow-hidden" style={{ backgroundColor: '#0F172A' }}>
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -690,7 +764,7 @@ function Home() {
           }}></div>
         </div>
         
-        <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
+        <div className="max-w-5xl mx-auto text-center px-6 sm:px-8 md:px-10 lg:px-12 relative z-10">
           {/* Main Content */}
           <div className="mb-8 sm:mb-12">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-6 sm:mb-8 leading-tight">
