@@ -386,12 +386,12 @@ function Home() {
           }}></div>
         </div>
         
-        <div className="relative z-10 px-4 sm:px-6 md:px-8 lg:px-12 max-w-7xl mx-auto w-full py-12 sm:py-16 md:py-20 pb-20 sm:pb-24 md:pb-28">
+        <div className="relative z-10 px-4 sm:px-6 md:px-8 lg:px-12 max-w-7xl mx-auto w-full pt-24 sm:pt-28 md:pt-32 pb-20 sm:pb-24 md:pb-28">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left Column - Content */}
             <div className="text-center lg:text-left">
               {/* Main Title with Character Animation */}
-              <div ref={titleRef} className="mt-8 sm:mt-12 md:mt-16 mb-2 sm:mb-3">
+              <div ref={titleRef} className="mb-2 sm:mb-3">
                 <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tight" style={{ marginBottom: '-0.1em', color: '#0F172A' }}>
                   <span className="char inline-block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>D</span>
                   <span className="char inline-block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>e</span>
