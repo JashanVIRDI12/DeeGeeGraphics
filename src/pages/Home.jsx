@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Sparkles, Globe, Sticker, ShieldCheck, Shirt, Printer, Store, Award, Target, Heart, Zap, Mail, Phone, ChevronDown } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Lottie from 'lottie-react'
-import pencilDrawingAnimation from '/Pencil Drawing.json'
 import Squares from '../components/Squares'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -22,7 +20,7 @@ function Home() {
   const featuredRef = useRef(null)
   const lottieRef = useRef(null)
   const lottieDesktopRef = useRef(null)
-  const svgButtonRef = useRef(null)
+  const infoCardsRef = useRef(null)
 
   useEffect(() => {
     // Set GSAP defaults for smoother animations
@@ -153,7 +151,7 @@ function Home() {
         ease: 'power3.out',
         force3D: true
       },
-      '-=0.3'
+      '-=0.5'
       )
     }
 
@@ -173,72 +171,93 @@ function Home() {
       '-=0.3'
     )
 
-    // SVG Button Animation Setup
-    if (svgButtonRef.current) {
-      const svgTl = gsap.timeline({ paused: true })
-      const rect = svgButtonRef.current.children[0]
-      const text = svgButtonRef.current.querySelector('text')
-      const polyline = svgButtonRef.current.querySelector('polyline')
-      const line = svgButtonRef.current.querySelector('line')
-      
-      svgTl.to(rect, { attr: { width: 220 }, duration: 0.4, ease: 'power4.inOut' })
-      svgTl.to(text, { fill: '#fff', duration: 0.4, ease: 'none' }, 0)
-      svgTl.to([polyline, line], { x: 14, duration: 0.4, ease: 'power4.inOut' }, 0)
-      svgTl.to(line, { attr: { x2: 3 }, duration: 0.4, ease: 'power4.inOut' }, 0)
-      
-      svgTl.reverse()
-      
-      const svgButton = svgButtonRef.current.parentElement
-      svgButton.addEventListener('mouseenter', () => svgTl.play())
-      svgButton.addEventListener('mouseleave', () => svgTl.reverse())
-    }
-
-    // Lottie Animation - Mobile
+    // Info div animations - Mobile
     if (lottieRef.current) {
+      const mobileCards = lottieRef.current.querySelectorAll('.info-stat')
       tl.fromTo(lottieRef.current,
         {
           opacity: 0,
-          scale: 0.8,
-          rotationY: -45,
-          z: -100,
-          transformOrigin: '50% 50%',
-          transformPerspective: 1000
+          scale: 0.9,
+          y: 30
         },
         {
           opacity: 1,
           scale: 1,
-          rotationY: 0,
-          z: 0,
-          duration: 0.8,
-          ease: 'back.out(1.3)',
-          force3D: true
+          y: 0,
+          duration: 0.6,
+          ease: 'back.out(1.3)'
         },
         '-=0.4'
       )
-    }
-
-    // Lottie Animation - Desktop
-    if (lottieDesktopRef.current) {
-      tl.fromTo(lottieDesktopRef.current,
+      
+      // Stagger animation for each stat
+      gsap.fromTo(mobileCards,
         {
           opacity: 0,
           scale: 0.8,
-          rotationY: 45,
-          z: -100,
-          transformOrigin: '50% 50%',
-          transformPerspective: 1000
+          y: 20
         },
         {
           opacity: 1,
           scale: 1,
-          rotationY: 0,
-          z: 0,
-          duration: 0.8,
-          ease: 'back.out(1.3)',
-          force3D: true
-        },
-        '-=0.8'
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: 'back.out(1.5)',
+          delay: 0.3
+        }
       )
+    }
+
+    // Info div animations - Desktop
+    if (lottieDesktopRef.current) {
+      const desktopCards = lottieDesktopRef.current.querySelectorAll('.info-item')
+      tl.fromTo(lottieDesktopRef.current,
+        {
+          opacity: 0,
+          x: 50,
+          scale: 0.95
+        },
+        {
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          duration: 0.7,
+          ease: 'power3.out'
+        },
+        '-=0.5'
+      )
+      
+      // Stagger animation for each item
+      gsap.fromTo(desktopCards,
+        {
+          opacity: 0,
+          x: 30,
+          rotationY: -15
+        },
+        {
+          opacity: 1,
+          x: 0,
+          rotationY: 0,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: 'back.out(1.3)',
+          delay: 0.4
+        }
+      )
+      
+      // Continuous subtle animation for icons
+      const icons = lottieDesktopRef.current.querySelectorAll('.info-icon')
+      icons.forEach((icon, index) => {
+        gsap.to(icon, {
+          y: -5,
+          duration: 1.5 + (index * 0.2),
+          ease: 'sine.inOut',
+          repeat: -1,
+          yoyo: true,
+          delay: index * 0.3
+        })
+      })
     }
 
     // Floating elements - no animation
@@ -490,20 +509,27 @@ function Home() {
                 </h2>
               </div>
 
-              {/* Lottie Animation - Mobile Only */}
-              <div ref={lottieRef} className="lg:hidden relative flex items-center justify-center mb-8 sm:mb-10">
-                {/* Blurry background effect */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full blur-3xl opacity-30" style={{ background: 'radial-gradient(circle, rgba(100, 116, 139, 0.4), rgba(15, 23, 42, 0.2))' }}></div>
-                </div>
-                
-                <div className="relative w-full max-w-xs sm:max-w-sm mx-auto rounded-3xl overflow-hidden">
-                  <Lottie 
-                    animationData={pencilDrawingAnimation} 
-                    loop={true}
-                    autoplay={true}
-                    className="w-full h-auto"
-                  />
+              {/* Info Card - Mobile Only */}
+              <div ref={lottieRef} className="lg:hidden relative mb-8 sm:mb-10">
+                <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-6 sm:p-8 shadow-2xl" style={{ border: '2px solid rgba(226, 232, 240, 0.8)' }}>
+                  <div className="grid grid-cols-2 gap-4 sm:gap-6">
+                    <div className="info-stat text-center p-4 rounded-2xl transition-all duration-300 hover:shadow-lg" style={{ backgroundColor: 'rgba(15, 23, 42, 0.03)' }}>
+                      <div className="text-4xl sm:text-5xl font-black mb-2 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>100+</div>
+                      <div className="text-xs sm:text-sm font-bold" style={{ color: '#64748B' }}>Projects Done</div>
+                    </div>
+                    <div className="info-stat text-center p-4 rounded-2xl transition-all duration-300 hover:shadow-lg" style={{ backgroundColor: 'rgba(15, 23, 42, 0.03)' }}>
+                      <div className="text-4xl sm:text-5xl font-black mb-2 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>100%</div>
+                      <div className="text-xs sm:text-sm font-bold" style={{ color: '#64748B' }}>Satisfaction</div>
+                    </div>
+                    <div className="info-stat text-center p-4 rounded-2xl transition-all duration-300 hover:shadow-lg" style={{ backgroundColor: 'rgba(15, 23, 42, 0.03)' }}>
+                      <div className="text-4xl sm:text-5xl font-black mb-2 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>Fast</div>
+                      <div className="text-xs sm:text-sm font-bold" style={{ color: '#64748B' }}>Delivery</div>
+                    </div>
+                    <div className="info-stat text-center p-4 rounded-2xl transition-all duration-300 hover:shadow-lg" style={{ backgroundColor: 'rgba(15, 23, 42, 0.03)' }}>
+                      <div className="text-4xl sm:text-5xl font-black mb-2 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>7 Days</div>
+                      <div className="text-xs sm:text-sm font-bold" style={{ color: '#64748B' }}>Support</div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -533,37 +559,59 @@ function Home() {
               
               {/* CTA Buttons */}
               <div ref={ctaRef} className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-                <button className="group text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 rounded-full font-black text-base sm:text-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 justify-center" style={{ backgroundColor: '#0F172A' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1E293B'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0F172A'}>
-                  <span>Get Started</span>
+                <Link to="/services" className="group text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 rounded-full font-black text-base sm:text-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 justify-center" style={{ backgroundColor: '#0F172A' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1E293B'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0F172A'}>
+                  <span>Our Services</span>
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-                </button>
+                </Link>
                 
-                <Link to="/projects" className="svg-button-wrapper cursor-pointer" style={{ background: 'none', border: 'none', padding: 0, outline: 'none', display: 'inline-block' }}>
-                  <svg ref={svgButtonRef} xmlns="http://www.w3.org/2000/svg" width="220" height="60" viewBox="0 0 220 60" className="w-full max-w-[220px] h-auto" style={{ display: 'block' }}>
-                    <rect x="0" y="0" width="60" height="60" rx="30" ry="30" fill="#0F172A" />
-                    <rect x="1" y="1" width="218" height="58" rx="29" ry="29" fill="none" stroke="#0F172A" strokeWidth="2" vectorEffect="non-scaling-stroke"/> 
-                    <text transform="translate(130 38)" textAnchor="middle" fontSize="20" fontWeight="900" fill="#0F172A" style={{ pointerEvents: 'none' }}>VIEW WORK</text>
-                    <line x1="38" y1="30" x2="38" y2="30" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-                    <polyline points="27 20 38 30 27 40" fill="none" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"></polyline>
-                  </svg>
+                <Link to="/projects" className="group border-3 px-6 sm:px-8 md:px-10 py-4 sm:py-5 rounded-full font-black text-base sm:text-lg transition-all duration-300 flex items-center space-x-2 justify-center" style={{ borderColor: '#0F172A', color: '#0F172A', backgroundColor: 'transparent' }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#0F172A'; e.currentTarget.style.color = '#FFFFFF'; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#0F172A'; }}>
+                  <span>View Our Work</span>
+                  <Zap className="w-6 h-6 group-hover:rotate-12 transition-transform" />
                 </Link>
               </div>
             </div>
 
-            {/* Right Column - Lottie Animation - Desktop Only */}
+            {/* Right Column - Info Card - Desktop Only */}
             <div ref={lottieDesktopRef} className="hidden lg:flex relative items-center justify-end">
-              {/* Blurry background effect */}
-              <div className="absolute inset-0 flex items-center justify-end">
-                <div className="w-96 h-96 rounded-full blur-3xl opacity-30" style={{ background: 'radial-gradient(circle, rgba(100, 116, 139, 0.4), rgba(15, 23, 42, 0.2))' }}></div>
-              </div>
-              
-              <div className="relative w-full max-w-lg ml-auto rounded-3xl overflow-hidden">
-                <Lottie 
-                  animationData={pencilDrawingAnimation} 
-                  loop={true}
-                  autoplay={true}
-                  className="w-full h-auto"
-                />
+              <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-10 shadow-2xl w-full max-w-md" style={{ border: '2px solid rgba(226, 232, 240, 0.8)' }}>
+                <div className="space-y-6">
+                  <div className="info-item flex items-center space-x-5 p-5 rounded-2xl transition-all duration-300 hover:shadow-lg hover:scale-105" style={{ backgroundColor: 'rgba(15, 23, 42, 0.03)' }}>
+                    <div className="info-icon flex-shrink-0 p-3 rounded-xl" style={{ backgroundColor: '#0F172A' }}>
+                      <Award className="w-8 h-8 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-4xl font-black mb-1 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>100+</div>
+                      <div className="text-base font-bold" style={{ color: '#64748B' }}>Projects Completed</div>
+                    </div>
+                  </div>
+                  <div className="info-item flex items-center space-x-5 p-5 rounded-2xl transition-all duration-300 hover:shadow-lg hover:scale-105" style={{ backgroundColor: 'rgba(15, 23, 42, 0.03)' }}>
+                    <div className="info-icon flex-shrink-0 p-3 rounded-xl" style={{ backgroundColor: '#0F172A' }}>
+                      <Heart className="w-8 h-8 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-4xl font-black mb-1 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>100%</div>
+                      <div className="text-base font-bold" style={{ color: '#64748B' }}>Client Satisfaction</div>
+                    </div>
+                  </div>
+                  <div className="info-item flex items-center space-x-5 p-5 rounded-2xl transition-all duration-300 hover:shadow-lg hover:scale-105" style={{ backgroundColor: 'rgba(15, 23, 42, 0.03)' }}>
+                    <div className="info-icon flex-shrink-0 p-3 rounded-xl" style={{ backgroundColor: '#0F172A' }}>
+                      <Zap className="w-8 h-8 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-4xl font-black mb-1 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>Fast</div>
+                      <div className="text-base font-bold" style={{ color: '#64748B' }}>Delivery Time</div>
+                    </div>
+                  </div>
+                  <div className="info-item flex items-center space-x-5 p-5 rounded-2xl transition-all duration-300 hover:shadow-lg hover:scale-105" style={{ backgroundColor: 'rgba(15, 23, 42, 0.03)' }}>
+                    <div className="info-icon flex-shrink-0 p-3 rounded-xl" style={{ backgroundColor: '#0F172A' }}>
+                      <Sparkles className="w-8 h-8 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-4xl font-black mb-1 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text' }}>7 Days</div>
+                      <div className="text-base font-bold" style={{ color: '#64748B' }}>Weekly Support</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
