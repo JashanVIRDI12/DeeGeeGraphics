@@ -5,6 +5,7 @@ import { Mail, Phone, MapPin, Send, Clock } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 import { emailjsConfig } from '../config/emailjs.config'
 import Squares from '../components/Squares'
+import SEO from '../components/SEO'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -200,8 +201,62 @@ function Contact() {
     },
   ]
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "name": "DeeGee Graphics",
+      "telephone": "+16475497017",
+      "email": "info@deegeegraphics.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "12545 Coleraine Drive, Unit 9",
+        "addressLocality": "Caledon",
+        "addressRegion": "ON",
+        "postalCode": "L7E 3B5",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.8847,
+        "longitude": -79.8638
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Caledon"
+        },
+        {
+          "@type": "City",
+          "name": "Toronto"
+        },
+        {
+          "@type": "State",
+          "name": "Ontario"
+        }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ]
+    }
+  }
+
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#F9FAFB' }}>
+    <>
+      <SEO 
+        title="Contact Us"
+        description="Get in touch with DeeGee Graphics for professional printing and design services serving Caledon, Toronto, and Ontario. Call us at (647) 549-7017 or email info@deegeegraphics.com. Open 7 days a week, 9 AM - 5 PM. Get a free quote today!"
+        keywords="contact DeeGee Graphics, printing services Caledon contact, Toronto printing contact, graphic design inquiry, get quote printing, Caledon printing company, Ontario printing services"
+        canonicalUrl="/contact"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen" style={{ backgroundColor: '#F9FAFB' }}>
       {/* Hero Section */}
       <section ref={heroRef} className="relative flex items-center justify-center overflow-hidden pt-32 pb-20" style={{ perspective: '1500px', backgroundColor: '#0F172A' }}>
         {/* Animated Squares Background */}
@@ -228,7 +283,7 @@ function Contact() {
                   <span className="char inline-block">I</span>
                   <span className="char inline-block">n</span>
                 </div>
-                <div className="text-white md:bg-gradient-to-r md:from-gray-300 md:to-white md:bg-clip-text md:text-transparent">
+                <div className="text-gray-300">
                   <span className="char inline-block">T</span>
                   <span className="char inline-block">o</span>
                   <span className="char inline-block">u</span>
@@ -512,6 +567,7 @@ function Contact() {
         </div>
       </section>
     </div>
+    </>
   )
 }
 

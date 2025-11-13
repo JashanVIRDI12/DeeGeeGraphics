@@ -4,6 +4,9 @@ import { ArrowRight, Sparkles, Globe, Sticker, ShieldCheck, Shirt, Printer, Stor
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Squares from '../components/Squares'
+import SEO from '../components/SEO'
+import { allReviewsSchema } from '../data/reviews'
+import { faqSchema } from '../data/faq'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -470,9 +473,79 @@ function Home() {
     { id: 3, image: 'sample2.png', title: 'Storefront Signage' }
   ]
 
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "DeeGee Graphics",
+      "image": "https://deegeegraphics.com/og-image.jpg",
+      "description": "Professional printing, design, and branding solutions serving Caledon, Toronto, and all of Ontario. Specializing in printing services, decals, safety labels, garment printing, storefront signs, and website design.",
+      "url": "https://deegeegraphics.com",
+      "telephone": "+16475497017",
+      "email": "info@deegeegraphics.com",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "12545 Coleraine Drive, Unit 9",
+        "addressLocality": "Caledon",
+        "addressRegion": "ON",
+        "postalCode": "L7E 3B5",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.8847,
+        "longitude": -79.8638
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Caledon"
+        },
+        {
+          "@type": "City",
+          "name": "Toronto"
+        },
+        {
+          "@type": "State",
+          "name": "Ontario"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "47",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": allReviewsSchema,
+      "sameAs": [
+        "https://www.instagram.com/deegeegraphics/",
+        "https://share.google/T54us6MDjM8G3FadE"
+      ]
+    },
+    faqSchema
+  ]
+
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#F9FAFB' }}>
-      {/* Hero Section */}
+    <>
+      <SEO 
+        title="Home"
+        description="DeeGee Graphics offers professional printing, design, and branding solutions serving Caledon, Toronto, and all of Ontario. Specializing in printing services, decals, safety labels, garment printing, storefront signs, and website design. Open 7 days a week, 9 AM - 5 PM. ⭐ 4.9/5 rating with 47+ reviews."
+        keywords="printing services Caledon, printing services Toronto, graphic design Ontario, decals printing, safety labels, garment printing, storefront signs, website design, branding solutions, custom printing, Toronto printing company, Ontario printing services"
+        canonicalUrl="/"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen" style={{ backgroundColor: '#F9FAFB' }}>
+        {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ perspective: '1500px', backgroundColor: '#F9FAFB' }}>
         {/* Animated Squares Background */}
         <div className="absolute inset-0 z-0 opacity-[0.15]">
@@ -884,6 +957,7 @@ function Home() {
         </div>
       </section>
     </div>
+    </>
   )
 }
 

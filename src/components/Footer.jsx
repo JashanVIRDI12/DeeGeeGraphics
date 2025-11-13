@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, ArrowRight } from 'lucide-react'
+import { Mail, Phone, MapPin, Instagram, ArrowRight, Clock } from 'lucide-react'
 
 function Footer() {
   return (
@@ -50,20 +50,66 @@ function Footer() {
             <div>
               <h3 className="text-lg font-black mb-6" style={{ color: '#0F172A' }}>Quick Links</h3>
               <ul className="space-y-3">
-                {['Home', 'Services', 'Projects', 'About', 'Contact'].map((item) => (
-                  <li key={item}>
-                    <Link 
-                      to={`/${item.toLowerCase()}`} 
-                      className="group flex items-center space-x-2 font-semibold transition-colors"
-                      style={{ color: '#64748B' }}
-                      onMouseEnter={(e) => e.currentTarget.style.color = '#0F172A'}
-                      onMouseLeave={(e) => e.currentTarget.style.color = '#64748B'}
-                    >
-                      <span className="w-0 h-0.5 group-hover:w-4 transition-all duration-300" style={{ backgroundColor: '#0F172A' }}></span>
-                      <span>{item}</span>
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <Link 
+                    to="/" 
+                    className="group flex items-center space-x-2 font-semibold transition-colors"
+                    style={{ color: '#64748B' }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#0F172A'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = '#64748B'}
+                  >
+                    <span className="w-0 h-0.5 group-hover:w-4 transition-all duration-300" style={{ backgroundColor: '#0F172A' }}></span>
+                    <span>Home</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/services" 
+                    className="group flex items-center space-x-2 font-semibold transition-colors"
+                    style={{ color: '#64748B' }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#0F172A'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = '#64748B'}
+                  >
+                    <span className="w-0 h-0.5 group-hover:w-4 transition-all duration-300" style={{ backgroundColor: '#0F172A' }}></span>
+                    <span>Services</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/projects" 
+                    className="group flex items-center space-x-2 font-semibold transition-colors"
+                    style={{ color: '#64748B' }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#0F172A'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = '#64748B'}
+                  >
+                    <span className="w-0 h-0.5 group-hover:w-4 transition-all duration-300" style={{ backgroundColor: '#0F172A' }}></span>
+                    <span>Projects</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/about" 
+                    className="group flex items-center space-x-2 font-semibold transition-colors"
+                    style={{ color: '#64748B' }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#0F172A'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = '#64748B'}
+                  >
+                    <span className="w-0 h-0.5 group-hover:w-4 transition-all duration-300" style={{ backgroundColor: '#0F172A' }}></span>
+                    <span>About Us</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/contact" 
+                    className="group flex items-center space-x-2 font-semibold transition-colors"
+                    style={{ color: '#64748B' }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#0F172A'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = '#64748B'}
+                  >
+                    <span className="w-0 h-0.5 group-hover:w-4 transition-all duration-300" style={{ backgroundColor: '#0F172A' }}></span>
+                    <span>Contact</span>
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -104,36 +150,53 @@ function Footer() {
                     </div>
                   </a>
                 </li>
+                <li>
+                  <div className="flex items-start space-x-3">
+                    <div className="p-2 rounded-lg" style={{ backgroundColor: '#E2E8F0' }}>
+                      <Clock className="w-4 h-4" style={{ color: '#0F172A' }} />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold" style={{ color: '#64748B' }}>Hours</p>
+                      <p className="font-bold text-sm" style={{ color: '#0F172A' }}>Opening Soon</p>
+                    </div>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
 
           {/* Bottom Bar */}
           <div className="pt-8 border-t-2 flex flex-col md:flex-row justify-between items-center gap-6" style={{ borderColor: '#E2E8F0' }}>
-            <p className="text-sm font-semibold" style={{ color: '#64748B' }}>
-              &copy; {new Date().getFullYear()} Dee Gee Graphics. All rights reserved.
-            </p>
+            <div className="flex flex-col md:flex-row items-center gap-4">
+              <p className="text-sm font-semibold" style={{ color: '#64748B' }}>
+                &copy; {new Date().getFullYear()} Dee Gee Graphics. All rights reserved.
+              </p>
+              <Link 
+                to="/terms" 
+                className="text-sm font-semibold transition-colors hover:underline"
+                style={{ color: '#64748B' }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#0F172A'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#64748B'}
+              >
+                Terms & Conditions
+              </Link>
+            </div>
             
             {/* Social Media */}
             <div className="flex items-center space-x-3">
               <span className="text-sm font-bold mr-2" style={{ color: '#0F172A' }}>Follow Us:</span>
-              {[
-                { icon: Facebook, href: '#' },
-                { icon: Twitter, href: '#' },
-                { icon: Instagram, href: '#' },
-                { icon: Linkedin, href: '#' }
-              ].map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className="p-3 rounded-xl transition-all duration-300 hover:scale-110"
-                  style={{ backgroundColor: '#0F172A' }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#64748B'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0F172A'}
-                >
-                  <social.icon className="w-5 h-5 text-white" />
-                </a>
-              ))}
+              <a
+                href="https://www.instagram.com/deegeegraphics/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-xl transition-all duration-300 hover:scale-110"
+                style={{ backgroundColor: '#0F172A' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#64748B'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0F172A'}
+                aria-label="Follow us on Instagram"
+              >
+                <Instagram className="w-5 h-5 text-white" />
+              </a>
             </div>
           </div>
         </div>

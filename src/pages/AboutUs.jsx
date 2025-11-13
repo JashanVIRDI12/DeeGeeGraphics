@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Users, Target, Heart, Award, Lightbulb, Rocket, ArrowRight, CheckCircle } from 'lucide-react'
 import Squares from '../components/Squares'
+import SEO from '../components/SEO'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -183,8 +184,61 @@ function AboutUs() {
     },
   ]
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About DeeGee Graphics",
+    "description": "Learn about DeeGee Graphics, a professional printing and design company serving Caledon, Toronto, and Ontario. Discover our mission, values, and commitment to quality.",
+    "url": "https://deegeegraphics.com/about",
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "name": "DeeGee Graphics",
+      "description": "Professional printing and design services serving Caledon, Toronto, and all of Ontario",
+      "telephone": "+16475497017",
+      "email": "info@deegeegraphics.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "12545 Coleraine Drive, Unit 9",
+        "addressLocality": "Caledon",
+        "addressRegion": "ON",
+        "postalCode": "L7E 3B5",
+        "addressCountry": "CA"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Caledon"
+        },
+        {
+          "@type": "City",
+          "name": "Toronto"
+        },
+        {
+          "@type": "State",
+          "name": "Ontario"
+        }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ]
+    }
+  }
+
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#F9FAFB' }}>
+    <>
+      <SEO 
+        title="About Us"
+        description="Learn about DeeGee Graphics, your trusted partner for professional printing and design services serving Caledon, Toronto, and Ontario. Discover our story, mission, values, and commitment to excellence. Open 7 days a week."
+        keywords="about DeeGee Graphics, printing company Caledon, printing company Toronto, design company Ontario, our story, printing services mission, Caledon business, Ontario printing company"
+        canonicalUrl="/about"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen" style={{ backgroundColor: '#F9FAFB' }}>
       {/* Hero Section */}
       <section ref={heroRef} className="relative flex items-center justify-center overflow-hidden pt-32 pb-20" style={{ perspective: '1500px', backgroundColor: '#0F172A' }}>
         {/* Animated Squares Background */}
@@ -378,6 +432,7 @@ function AboutUs() {
         </div>
       </section>
     </div>
+    </>
   )
 }
 

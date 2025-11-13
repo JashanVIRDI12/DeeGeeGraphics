@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight, ChevronDown } from 'lucide-react'
 import Squares from '../components/Squares'
+import SEO from '../components/SEO'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -130,160 +131,363 @@ function Projects() {
       id: 1,
       title: 'Creative Project 01',
       category: 'Design',
-      image: '/sample1.png',
+      image: '/087488bd-f505-49d4-84d3-7c66c63692aa.JPG',
       description: 'Innovative design solutions'
     },
     {
       id: 2,
       title: 'Creative Project 02',
       category: 'Branding',
-      image: '/sample2.png',
+      image: '/1329f8c8-9d6d-4305-ae9d-684408ebf352.JPG',
       description: 'Brand identity excellence'
     },
     {
       id: 3,
       title: 'Creative Project 03',
       category: 'Graphics',
-      image: '/sample3.png',
+      image: '/34d5f942-1423-402a-bb26-4d8966051b5f.JPG',
       description: 'Visual storytelling mastery'
     },
     {
       id: 4,
       title: 'Creative Project 04',
       category: 'Print',
-      image: '/sample4.png',
+      image: '/3aee8b8e-2e10-41b4-ab07-84688decf3ce.JPG',
       description: 'Premium print solutions'
     },
     {
       id: 5,
       title: 'Creative Project 05',
       category: 'Design',
-      image: '/sample5.png',
+      image: '/90963de1-577d-49a4-9954-786ac219b2a9.JPG',
       description: 'Modern design approach'
     },
     {
       id: 6,
       title: 'Creative Project 06',
       category: 'Branding',
-      image: '/sample6.png',
+      image: '/a4b4e1be-01a5-471f-80a2-19944d201879.JPG',
       description: 'Strategic brand development'
     },
     {
       id: 7,
       title: 'Creative Project 07',
       category: 'Graphics',
-      image: '/sample7.png',
+      image: '/a58d3428-22e2-4a21-a93d-5562fb86fa5c.JPG',
       description: 'Compelling visual content'
     },
     {
       id: 8,
       title: 'Creative Project 08',
       category: 'Print',
-      image: '/sample8.png',
+      image: '/a6ce223e-e284-407d-b94b-8e4f99ebf07e.JPG',
       description: 'High-quality printing'
     },
     {
       id: 9,
       title: 'Creative Project 09',
       category: 'Design',
-      image: '/sample9.png',
+      image: '/b0471df1-816a-49ba-80fd-e038bc0da482.JPG',
       description: 'Creative excellence'
     },
     {
       id: 10,
       title: 'Creative Project 10',
       category: 'Branding',
-      image: '/sample10.png',
+      image: '/bb8bf0bb-0be6-4679-a2b0-47edfc5bde47.JPG',
       description: 'Brand transformation'
     },
     {
       id: 11,
       title: 'Creative Project 11',
       category: 'Graphics',
-      image: '/sample11.png',
+      image: '/e1a8491d-dd7b-4544-8e6b-572b6db0aab4.JPG',
       description: 'Artistic visual design'
     },
     {
       id: 12,
       title: 'Creative Project 12',
       category: 'Print',
-      image: '/sample12.png',
+      image: '/f16485df-fa2f-4ea4-be41-6bb127ebb662.JPG',
       description: 'Professional print work'
     },
     {
       id: 13,
       title: 'Creative Project 13',
       category: 'Design',
-      image: '/sample13.png',
-      description: 'Innovative concepts'
+      image: '/sample1.png',
+      description: 'Innovative design solutions'
     },
     {
       id: 14,
       title: 'Creative Project 14',
       category: 'Branding',
-      image: '/sample14.png',
-      description: 'Brand identity design'
+      image: '/sample2.png',
+      description: 'Brand identity excellence'
     },
     {
       id: 15,
       title: 'Creative Project 15',
       category: 'Graphics',
-      image: '/sample15.png',
-      description: 'Visual communication'
+      image: '/sample3.png',
+      description: 'Visual storytelling mastery'
     },
     {
       id: 16,
       title: 'Creative Project 16',
       category: 'Print',
-      image: '/sample16.png',
-      description: 'Quality print materials'
+      image: '/sample4.png',
+      description: 'Premium print solutions'
     },
     {
       id: 17,
       title: 'Creative Project 17',
       category: 'Design',
-      image: '/sample17.png',
-      description: 'Contemporary design'
+      image: '/sample5.png',
+      description: 'Modern design approach'
     },
     {
       id: 18,
       title: 'Creative Project 18',
       category: 'Branding',
-      image: '/sample18.png',
-      description: 'Brand strategy'
+      image: '/sample6.png',
+      description: 'Strategic brand development'
     },
     {
       id: 19,
       title: 'Creative Project 19',
       category: 'Graphics',
-      image: '/sample19.png',
-      description: 'Graphic excellence'
+      image: '/sample7.png',
+      description: 'Compelling visual content'
     },
     {
       id: 20,
       title: 'Creative Project 20',
       category: 'Print',
-      image: '/sample20.png',
-      description: 'Print perfection'
+      image: '/sample8.png',
+      description: 'High-quality printing'
     },
     {
       id: 21,
       title: 'Creative Project 21',
       category: 'Design',
-      image: '/sample21.png',
-      description: 'Design innovation'
+      image: '/sample9.png',
+      description: 'Creative excellence'
     },
     {
       id: 22,
       title: 'Creative Project 22',
       category: 'Branding',
+      image: '/sample10.png',
+      description: 'Brand transformation'
+    },
+    {
+      id: 23,
+      title: 'Creative Project 23',
+      category: 'Graphics',
+      image: '/sample11.png',
+      description: 'Artistic visual design'
+    },
+    {
+      id: 24,
+      title: 'Creative Project 24',
+      category: 'Print',
+      image: '/sample12.png',
+      description: 'Professional print work'
+    },
+    {
+      id: 25,
+      title: 'Creative Project 25',
+      category: 'Design',
+      image: '/sample13.png',
+      description: 'Innovative concepts'
+    },
+    {
+      id: 26,
+      title: 'Creative Project 26',
+      category: 'Branding',
+      image: '/sample14.png',
+      description: 'Brand identity design'
+    },
+    {
+      id: 27,
+      title: 'Creative Project 27',
+      category: 'Graphics',
+      image: '/sample15.png',
+      description: 'Visual communication'
+    },
+    {
+      id: 28,
+      title: 'Creative Project 28',
+      category: 'Print',
+      image: '/sample16.png',
+      description: 'Quality print materials'
+    },
+    {
+      id: 29,
+      title: 'Creative Project 29',
+      category: 'Design',
+      image: '/sample17.png',
+      description: 'Contemporary design'
+    },
+    {
+      id: 30,
+      title: 'Creative Project 30',
+      category: 'Branding',
+      image: '/sample18.png',
+      description: 'Brand strategy'
+    },
+    {
+      id: 31,
+      title: 'Creative Project 31',
+      category: 'Graphics',
+      image: '/sample19.png',
+      description: 'Graphic excellence'
+    },
+    {
+      id: 32,
+      title: 'Creative Project 32',
+      category: 'Print',
+      image: '/sample20.png',
+      description: 'Print perfection'
+    },
+    {
+      id: 33,
+      title: 'Creative Project 33',
+      category: 'Design',
+      image: '/sample21.png',
+      description: 'Design innovation'
+    },
+    {
+      id: 34,
+      title: 'Creative Project 34',
+      category: 'Branding',
       image: '/sample22.png',
       description: 'Complete branding'
+    },
+    {
+      id: 35,
+      title: 'Creative Project 35',
+      category: 'Print',
+      image: '/11b218b6-0c3f-47ef-81fe-c93fc314ca3a.JPG',
+      description: 'Professional printing work'
+    },
+    {
+      id: 36,
+      title: 'Creative Project 36',
+      category: 'Design',
+      image: '/29045466-a67c-4a71-9362-18b8a307bf26.JPG',
+      description: 'Creative design solutions'
+    },
+    {
+      id: 37,
+      title: 'Creative Project 37',
+      category: 'Graphics',
+      image: '/482b1329-82b6-4fe9-a29b-c9032552a044.JPG',
+      description: 'Visual graphics excellence'
+    },
+    {
+      id: 38,
+      title: 'Creative Project 38',
+      category: 'Branding',
+      image: '/48edeb86-c45f-4155-ab13-d80b67a64a16.JPG',
+      description: 'Brand identity development'
+    },
+    {
+      id: 39,
+      title: 'Creative Project 39',
+      category: 'Print',
+      image: '/5584dd67-0b68-402f-b11f-c5dd3e67b50d.JPG',
+      description: 'High-quality print materials'
+    },
+    {
+      id: 40,
+      title: 'Creative Project 40',
+      category: 'Design',
+      image: '/8bc04c4e-0735-4bd0-b298-bfd265ab1c17.JPG',
+      description: 'Innovative design concepts'
+    },
+    {
+      id: 41,
+      title: 'Creative Project 41',
+      category: 'Graphics',
+      image: '/a16a1551-ab0b-4b26-aeda-b3fcf28b8177.JPG',
+      description: 'Compelling visual content'
+    },
+    {
+      id: 42,
+      title: 'Creative Project 42',
+      category: 'Branding',
+      image: '/a251dbba-fd10-40e3-b16e-3b02f57e0d8f.JPG',
+      description: 'Strategic brand solutions'
+    },
+    {
+      id: 43,
+      title: 'Creative Project 43',
+      category: 'Print',
+      image: '/a5d51d2c-d505-40c3-90fd-ace42e19c90f.JPG',
+      description: 'Premium printing services'
+    },
+    {
+      id: 44,
+      title: 'Creative Project 44',
+      category: 'Design',
+      image: '/d042b0a9-b32c-493b-ba99-b632b8722317.JPG',
+      description: 'Modern design approach'
+    },
+    {
+      id: 45,
+      title: 'Creative Project 45',
+      category: 'Graphics',
+      image: '/dab7ec5a-c4fa-4a10-a431-3f528e81e117.JPG',
+      description: 'Creative visual design'
+    },
+    {
+      id: 46,
+      title: 'Creative Project 46',
+      category: 'Branding',
+      image: '/dad61946-2a07-49ba-a36e-6aa175248a9e.JPG',
+      description: 'Professional branding work'
+    },
+    {
+      id: 47,
+      title: 'Creative Project 47',
+      category: 'Print',
+      image: '/ea869ac8-d5b5-492f-8907-9bed57efe797.JPG',
+      description: 'Quality print solutions'
     }
   ]
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "DeeGee Graphics - Our Projects Portfolio",
+    "description": "Explore our portfolio of printing and design projects including brand identities, custom printing, storefront signage, decals, safety labels, garment printing, and website design projects serving Caledon, Toronto, and Ontario.",
+    "url": "https://deegeegraphics.com/projects",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "DeeGee Graphics",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "12545 Coleraine Drive, Unit 9",
+        "addressLocality": "Caledon",
+        "addressRegion": "ON",
+        "postalCode": "L7E 3B5",
+        "addressCountry": "CA"
+      }
+    }
+  }
+
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#F9FAFB' }}>
+    <>
+      <SEO 
+        title="Our Projects"
+        description="Explore DeeGee Graphics portfolio showcasing our best printing and design work serving Caledon, Toronto, and Ontario. View 30+ completed projects in printing services, decals, safety labels, garment printing, storefront signs, and website design."
+        keywords="printing portfolio, design projects, printing examples, custom printing work, DeeGee Graphics portfolio, Caledon printing projects, Toronto printing portfolio, Ontario design work"
+        canonicalUrl="/projects"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen" style={{ backgroundColor: '#F9FAFB' }}>
       {/* Hero Section */}
       <section ref={heroRef} className="relative flex items-center justify-center overflow-hidden pt-32 pb-20" style={{ perspective: '1500px', backgroundColor: '#0F172A' }}>
         {/* Animated Squares Background */}
@@ -316,7 +520,7 @@ function Projects() {
                   <span className="char inline-block">v</span>
                   <span className="char inline-block">e</span>
                 </div>
-                <div className="text-white md:bg-gradient-to-r md:from-gray-300 md:to-white md:bg-clip-text md:text-transparent">
+                <div className="text-gray-300">
                   <span className="char inline-block">P</span>
                   <span className="char inline-block">o</span>
                   <span className="char inline-block">r</span>
@@ -359,7 +563,7 @@ function Projects() {
             {projects.map((project) => (
               <div 
                 key={project.id} 
-                className="gallery-item group cursor-pointer"
+                className="gallery-item group"
               >
                 <div className="relative overflow-hidden rounded-3xl shadow-2xl transition-all duration-500 hover:shadow-[0_20px_60px_rgba(15,23,42,0.3)]">
                   {/* Image - Fixed Height */}
@@ -424,6 +628,7 @@ function Projects() {
         </div>
       </section>
     </div>
+    </>
   )
 }
 

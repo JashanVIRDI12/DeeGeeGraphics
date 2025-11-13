@@ -2,8 +2,9 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Globe, Sticker, ShieldCheck, Shirt, Printer, Store, ArrowRight, Mail, Phone } from 'lucide-react'
+import { Globe, Sticker, ShieldCheck, Shirt, Printer, Store, ArrowRight, Mail, Phone, CreditCard, Image, Truck, Eye, FileText } from 'lucide-react'
 import Squares from '../components/Squares'
+import SEO from '../components/SEO'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -126,45 +127,88 @@ function Services() {
 
   const services = [
     {
-      icon: <Printer className="w-10 h-10" />,
-      title: "Printing Services",
-      description: "Premium printing solutions for business cards, brochures, banners, and more.",
-      image: "/printingservices.jpg"
+      icon: <CreditCard className="w-10 h-10" />,
+      title: "Business Cards Printing",
+      description: "Professional business cards printing with premium quality materials and custom design options.",
+      image: "/businesscard.jpg",
+      link: "/services/business-cards"
     },
     {
-      icon: <Sticker className="w-10 h-10" />,
-      title: "Decals",
-      description: "Custom commercial decals for vehicles, windows, and walls, enhancing visibility with vibrant, durable designs.",
-      image: "/decals.jpg"
-    },
-    {
-      icon: <ShieldCheck className="w-10 h-10" />,
-      title: "Safety Labels",
-      description: "High-quality, long-lasting safety labels and vests ensuring compliance and workplace safety.",
-      image: "/safetylabel.jpg"
-    },
-    {
-      icon: <Shirt className="w-10 h-10" />,
-      title: "Garment Printing",
-      description: "Personalized apparel with high-quality printing for branding, events, or promotions.",
-      image: "/garmentprinting.jpg"
+      icon: <Image className="w-10 h-10" />,
+      title: "Wall Murals & Wide Format",
+      description: "Custom wall murals and wide format printing for stunning visual impact and brand enhancement.",
+      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      link: "/services/wall-murals"
     },
     {
       icon: <Store className="w-10 h-10" />,
-      title: "Store Front Signs",
-      description: "Eye-catching storefront signs that enhance your brand's presence and attract customers.",
-      image: "/storefront.jpg"
+      title: "Signs & Channel Letters",
+      description: "Professional signage solutions including storefront signs, channel letters, and outdoor displays.",
+      image: "/storefront.jpg",
+      link: "/services/signs"
+    },
+    {
+      icon: <Truck className="w-10 h-10" />,
+      title: "Vehicle Wraps & Decals",
+      description: "Transform your vehicles into mobile advertising with professional wraps, decals, and graphics.",
+      image: "/decals.jpg",
+      link: "/services/vehicle-wraps"
+    },
+    {
+      icon: <Eye className="w-10 h-10" />,
+      title: "Window Graphics & Floor Wraps",
+      description: "Eye-catching window graphics, floor wraps, and specialty printing for retail and commercial spaces.",
+      image: "/floorwrap.jpg",
+      link: "/services/window-graphics"
+    },
+    {
+      icon: <Shirt className="w-10 h-10" />,
+      title: "T-Shirt & Garment Printing",
+      description: "Custom t-shirt printing, hoodies, uniforms, and promotional apparel with various printing methods.",
+      image: "/garmentprinting.jpg",
+      link: "/services/garment-printing"
+    },
+    {
+      icon: <FileText className="w-10 h-10" />,
+      title: "Paper & Offset Printing",
+      description: "Professional paper printing, pamphlets, brochures, and offset printing for all your business needs.",
+      image: "/printingservices.jpg",
+      link: "/services/paper-printing"
     },
     {
       icon: <Globe className="w-10 h-10" />,
       title: "Website Design",
-      description: "Build a stunning, responsive, and user-friendly website tailored to your brand's needs.",
-      image: "/webdesign.jpg"
+      description: "Build a stunning, responsive, and user-friendly website tailored to your brand's needs and goals.",
+      image: "/webdesign.jpg",
+      link: "/contact"
     }
   ]
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": services.map((service, index) => ({
+      "@type": "Service",
+      "name": service.title,
+      "description": service.description,
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "DeeGee Graphics"
+      },
+      "areaServed": ["Caledon", "Toronto", "Ontario", "GTA", "Bolton", "Inglewood", "North York", "Mississauga", "Brampton"]
+    }))
+  }
+
   return (
-    <div className="min-h-screen bg-black">
+    <>
+      <SEO 
+        title="Professional Printing Services | Caledon & Toronto | DeeGee Graphics"
+        description="Comprehensive printing services in Caledon and Toronto. Business cards printing, wall murals, signs, vehicle wraps, t-shirt printing, paper printing, and website design. Serving GTA with premium quality and competitive pricing."
+        keywords="printing services Caledon, printing services Toronto, business cards printing, wall murals, wide format printing, signs, channel letters, storefront signs, vehicle wraps, truck decals, trailer wraps, window graphics, floor wraps, t-shirt printing, hoodie printing, garment printing, paper printing, pamphlets printing, offset printing, box printing, website design, printing near me, cheap printing, commercial printing GTA"
+        canonicalUrl="/services"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-black">
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" style={{ perspective: '1500px', backgroundColor: '#F9FAFB' }}>
         {/* Animated Squares Background */}
@@ -345,13 +389,99 @@ function Services() {
                     <h3 className="text-2xl md:text-3xl font-black mb-4 transition-colors duration-300" style={{ color: '#0F172A' }}>
                       {service.title}
                     </h3>
-                    <p className="text-base leading-relaxed transition-colors duration-300" style={{ color: '#64748B' }}>
+                    <p className="text-base leading-relaxed mb-6 transition-colors duration-300" style={{ color: '#64748B' }}>
                       {service.description}
                     </p>
+                    
+                    {/* Learn More Button */}
+                    <Link 
+                      to={service.link} 
+                      className="inline-flex items-center space-x-2 px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                      style={{ backgroundColor: '#0F172A', color: '#F9FAFB' }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1E293B'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0F172A'}
+                    >
+                      <span>Learn More</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Serving Areas Section */}
+      <section className="py-32 relative overflow-hidden" style={{ backgroundColor: '#FFFFFF' }}>
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-7xl font-black mb-6" style={{ color: '#0F172A' }}>
+              Serving Areas
+            </h2>
+            <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: '#64748B' }}>
+              Professional printing services delivered throughout Caledon, Toronto, and the Greater Toronto Area
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Caledon Areas */}
+            <div className="text-center">
+              <h3 className="text-3xl font-black mb-8" style={{ color: '#0F172A' }}>
+                Caledon & Surrounding Areas
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  "Bolton", "Inglewood", "Palgrave", "Cheltenham", "Caledon East", "Caledon Village",
+                  "Mayfield", "Terra Cotta", "Alton", "Belfountain", "Cataract", "Mono Mills"
+                ].map((area, index) => (
+                  <div key={index} className="p-4 rounded-xl shadow-lg transition-all duration-300 hover:scale-105" style={{ backgroundColor: '#F9FAFB', border: '2px solid rgba(226, 232, 240, 0.8)' }}>
+                    <span className="font-bold text-lg" style={{ color: '#0F172A' }}>{area}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Toronto & GTA Areas */}
+            <div className="text-center">
+              <h3 className="text-3xl font-black mb-8" style={{ color: '#0F172A' }}>
+                Toronto & GTA
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  "Downtown Toronto", "North York", "Scarborough", "Etobicoke", "Mississauga", "Brampton",
+                  "Vaughan", "Markham", "Richmond Hill", "Thornhill", "Oakville", "Burlington"
+                ].map((area, index) => (
+                  <div key={index} className="p-4 rounded-xl shadow-lg transition-all duration-300 hover:scale-105" style={{ backgroundColor: '#F9FAFB', border: '2px solid rgba(226, 232, 240, 0.8)' }}>
+                    <span className="font-bold text-lg" style={{ color: '#0F172A' }}>{area}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Local SEO Links */}
+          <div className="text-center mt-16">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Link 
+                to="/services/caledon-printing" 
+                className="px-8 py-4 rounded-full font-black text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                style={{ backgroundColor: '#0F172A', color: '#F9FAFB' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1E293B'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0F172A'}
+              >
+                Caledon Printing Services
+              </Link>
+              <Link 
+                to="/services/toronto-printing" 
+                className="px-8 py-4 rounded-full font-black text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                style={{ backgroundColor: '#0F172A', color: '#F9FAFB' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1E293B'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0F172A'}
+              >
+                Toronto Printing Services
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -410,6 +540,7 @@ function Services() {
         </div>
       </section>
     </div>
+    </>
   )
 }
 

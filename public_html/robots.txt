@@ -1,0 +1,27 @@
+# robots.txt for DeeGee Graphics
+# https://deegeegraphics.com
+# Professional Printing & Design Services in Caledon, Toronto & Ontario
+
+# Allow all bots to crawl all content
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /*.json$
+
+# Specific bot configurations
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Sitemap locations
+Sitemap: https://deegeegraphics.com/sitemap.xml
+
+# Host preference (optional)
+Host: https://deegeegraphics.com

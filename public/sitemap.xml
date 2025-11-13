@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  
+  <!-- Home Page -->
+  <url>
+    <loc>https://deegeegraphics.com/</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://deegeegraphics.com/og-image.jpg</image:loc>
+      <image:title>DeeGee Graphics - Professional Printing Services</image:title>
+      <image:caption>Professional printing, design, and branding solutions in Caledon, Toronto, and Ontario</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Services Page -->
+  <url>
+    <loc>https://deegeegraphics.com/services</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://deegeegraphics.com/printingservices.jpg</image:loc>
+      <image:title>Printing Services</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://deegeegraphics.com/decals.jpg</image:loc>
+      <image:title>Decals Printing</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://deegeegraphics.com/storefront.jpg</image:loc>
+      <image:title>Storefront Signs</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Projects Page -->
+  <url>
+    <loc>https://deegeegraphics.com/projects</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://deegeegraphics.com/sample1.png</image:loc>
+      <image:title>Brand Identity Design Project</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://deegeegraphics.com/sample2.png</image:loc>
+      <image:title>Storefront Signage Project</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://deegeegraphics.com/sample3.png</image:loc>
+      <image:title>Custom Printing Project</image:title>
+    </image:image>
+  </url>
+  
+  <!-- About Page -->
+  <url>
+    <loc>https://deegeegraphics.com/about</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Contact Page -->
+  <url>
+    <loc>https://deegeegraphics.com/contact</loc>
+    <lastmod>2025-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+</urlset>
